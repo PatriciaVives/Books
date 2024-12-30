@@ -29,3 +29,15 @@ def create_tables():
 
 	conn.commit()
 	conn.close()
+
+#functie toevoegen book
+def add_book(title, author, purchase_date, status, in_collection):
+	conn = connect_to_db()
+	cursor = conn.cursor()
+
+	cursor.execute('''INSERT INTO books (title, author, purchase_date, status, in_collection)
+						VALUES (?, ?, ?, ?, ?)''', (title, author, purchase_date, status, in_collection))
+
+	conn.commit()
+	conn.close()
+	print(f"Book '{title}' is added!")
