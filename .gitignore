@@ -7,15 +7,13 @@ __pycache__/
 *.so
 
 # the database itself
-dbproject.sqlite3
-project_db.db
+books.db
 
 # configuration files
 settings.py
 .env
 
 # the hidden folder of your virtual environment
-.env
 .venv
 env/
 venv/

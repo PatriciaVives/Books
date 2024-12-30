@@ -21,6 +21,6 @@ You can generate a report in CSV.
 You will need:
 Python, SQLite, Virtual environment
 
-The name of the database is: dbproject.sqlite3
+The name of the database is: dbbooks
 
 The address of the git repository is: https://github.com/PatriciaVives/Books.git
