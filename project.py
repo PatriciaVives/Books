@@ -1,26 +1,48 @@
 import database
+from datetime import datetime
 
 def show_menu():
-	print("\nBooks")
-	print("1. Add a new book")
-	print("2. Add a review")
-	print("3. Show all books")
-	print("4. Stop")
+    print("\nBooks")
+    print("1. Add a new book")
+    print("2. Add a review")
+    print("3. Show all books")
+    print("4. Stop")
 
 def add_book():
-	title = input("Title of the book: ")
-	author = input("Author of the book: ")
-	purchase_date = input("Date when the book was purchased (YYYY-MM-DD): ")
-	status = input("Status of the book (Read/Unread): ").title()
-	in_collection = input("Is the book in the collection? (yes/no): ").lower() =="yes"
+    title = input("Title of the book: ").strip()
+    author = input("Author of the book: ").strip()
+    purchase_date = input("Date when the book was purchased (YYYY-MM-DD): ").strip()
+    
+    try:
+        datetime.strptime(purchase_date, "%Y-%m-%d")
+    except ValueError:
+        print("Invalid date format! Use YYYY-MM-DD.")
+        return
 
-	database.add_book(title, author, purchase_date, status, in_collection)
+    status = input("Status of the book (Read/Unread): ").title()
+    in_collection = input("Is the book in the collection? (yes/no): ").strip().lower() =="yes"
+
+    database.add_book(title, author, purchase_date, status, in_collection)
 
 def add_review():
-    book_id = int(input("Enter the book ID: "))
-    rating = int(input("Rate the book (1 - 5): "))
-    finished_reading_date = input("Date when the book was finished (YYYY-MM-DD): ")
-    comments = input("Remarks about the book: ")
+    try:
+        book_id = int(input("Enter the book ID: ").strip())
+        rating = int(input("Rate the book (1 - 5): ").strip())
+        if rating < 1 or rating > 5:
+            print("Rating must be between 1 and 5!")
+            return
+    except ValueError:
+        print("Invalid input. Please enter a number.")
+        return
+
+    finished_reading_date = input("Date when the book was finished (YYYY-MM-DD): ").strip()
+    try:
+        datetime.strptime(finished_reading_date, "%Y-%m-%d")
+    except ValueError:
+        print("Invalid date format! Use YYYY-MM-DD.")
+        return
+
+    comments = input("Remarks about the book: ").strip()
     
     database.add_review(book_id, rating, finished_reading_date, comments)
 
