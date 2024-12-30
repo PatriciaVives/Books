@@ -75,7 +75,7 @@ def add_review(book_id, rating, finished_reading_dated, comments):
 	existing_review = cursor.fetchone()
 	if existing_review:
 		print(f"Book with ID {book_id} has already been reviewed")
-	elif rating < 1 or > 5:
+	elif rating < 1 or rating > 5:
 		print("Rating must be between 1 and 5!")
 	else:
 		cursor.execute('''INSERT INTO reviews (book_id, rating, finished_reading_dated, comments)
