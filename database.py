@@ -30,7 +30,7 @@ def create_tables():
 	conn.commit()
 	conn.close()
 
-#functie toevoegen book
+#functie toevoegen boek
 def add_book(title, author, purchase_date, status, in_collection):
 	conn = connect_to_db()
 	cursor = conn.cursor()
@@ -41,3 +41,26 @@ def add_book(title, author, purchase_date, status, in_collection):
 	conn.commit()
 	conn.close()
 	print(f"Book '{title}' is added!")
+
+#functie opvragen boeken
+def get_books():
+	conn = connect_to_db()
+	cursor = conn.cursor()
+
+	cursor.execute('SELECT * FROM books')
+	books = cursor.fetchall()
+
+	conn.close()
+	return books
+
+#functie review toevoegen
+def add_review(book_id, rating, finished_reading_dated, comments):
+	conn = connect_to_db()
+	cursor = conn.cursor()
+
+	cursor.execute('''INSERT INTO reviews (book_id, rating, finished_reading_dated, comments)
+						VALUES (?, ?, ?, ?, ?)''', (book_id, rating, finished_reading_dated, comments))
+
+	conn.commit()
+	conn.close()
+	print(f"Review for book with id '{book_id}' is added!")
