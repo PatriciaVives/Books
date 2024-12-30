@@ -1,0 +1,21 @@
+# files with compiled code or the folders with compiled code
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# the database itself
+dbopdracht.sqlite3
+opdracht_db.db
+
+# configuration files
+settings.py
+.env
+
+# the hidden folder of your virtual environment
+.env
+.venv
+env/
+venv/
