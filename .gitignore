@@ -7,8 +7,8 @@ __pycache__/
 *.so
 
 # the database itself
-dbopdracht.sqlite3
-opdracht_db.db
+dbproject.sqlite3
+project_db.db
 
 # configuration files
 settings.py
