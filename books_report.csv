@@ -1,0 +1,5 @@
+Book ID,Title,Author,Purchase Date,Status,In Collection
+1,"""The Shining""","""Stephen King""",2021-03-12,Read,1
+2,"""War and Peace""","""Leo Tolstoy""",2016-11-17,Read,0
+3,"""1984""","""George Orwell""",2013-04-22,Unread,1
+4,"""Emma""","""Jane Austen""",2013-05-03,Read,1

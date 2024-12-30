@@ -13,13 +13,17 @@ The books that have been read will have a rating
 
 You can add books to the database.
 You can add ratings to the books that have been read.
+You can view all the books stored in the database.
 You can search for books based on the title or writer.
 You can generate a report in CSV.
 
 - How should you run the application:
 
-You will need:
-Python, SQLite, Virtual environment
+To run this app, you need to have the following installed:
+
+Python 3.x
+SQLite
+Virtual Environment (recommended)
 
 The name of the database is: dbbooks
 

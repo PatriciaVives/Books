@@ -6,7 +6,9 @@ def show_menu():
     print("1. Add a new book")
     print("2. Add a review")
     print("3. Show all books")
-    print("4. Stop")
+    print("4. Export books to CSV")
+    print("5. Search books")
+    print("6. Stop")
 
 def add_book():
     title = input("Title of the book: ").strip()
@@ -55,11 +57,20 @@ def get_books():
     else:
         print("There are no books in the list.")
 
+def search_books():
+    query = input("Enter title or author to search: ").strip()
+    books = database.search_books(query)
+    if books:
+        for book in books:
+            print(f"ID: {book[0]}, Title: {book[1]}, Author: {book[2]}, Date of Purchase: {book[3]}, Status: {book[4]}, In Collection: {book[5]}")
+    else:
+        print("No books found matching your search.")
+
 def main():
     database.create_tables()
     while True:
         show_menu()
-        choice = input("Choose option (1-4): ")
+        choice = input("Choose option (1-6): ")
 
         if choice == '1':
             add_book()
@@ -68,6 +79,10 @@ def main():
         elif choice == '3':
             get_books()
         elif choice == '4':
+            database.export_books_to_csv()
+        elif choice == '5':
+            search_books()
+        elif choice == '6':
             print("Goodbye!")
             break
         else:
